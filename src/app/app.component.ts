@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {Post} from './post';
+import { Post } from './models/post.model';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -8,30 +9,18 @@ import {Post} from './post';
 })
 
 export class AppComponent {
-
-  posts = [
-    new Post(
-      'Mon premier post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' +
-      'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-    ),
-    new Post(
-      'Mon deuxième post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' +
-      'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-    ),
-    new Post(
-      'Encore un post',
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ' +
-      'ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris ' +
-      'nisi ut aliquip ex ea commodo'
-    )
-  ];
-
-  constructor() { }
-
-  getPosts() {
-    return this.posts;
+  constructor() {
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: 'AIzaSyCoxzbp8q62fXwFCk3VJGkuAjQgDiY1xWE',
+      authDomain: 'ocr-angular-activite-blog.firebaseapp.com',
+      databaseURL: 'https://ocr-angular-activite-blog.firebaseio.com',
+      projectId: 'ocr-angular-activite-blog',
+      storageBucket: 'ocr-angular-activite-blog.appspot.com',
+      messagingSenderId: '201756908988',
+      appId: '1:201756908988:web:3a2b06cf05b3a1b69e1fb9'
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
   }
-
 }
